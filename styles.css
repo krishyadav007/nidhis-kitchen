@@ -1,0 +1,246 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 50;
+  border-radius: 999px;
+  background: #e3ab3a;
+  color: #1c120c;
+  padding: 0.55rem 0.9rem;
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: 0.6rem;
+}
+
+:focus-visible {
+  outline: 2px solid #f2c14b;
+  outline-offset: 3px;
+}
+
+.nav {
+  display: none;
+}
+
+.nav a {
+  color: #3a2e24;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  color: #2f6a4a;
+}
+
+.menu-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(58, 46, 36, 0.25);
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 2px;
+  background: #3a2e24;
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.menu-toggle .bar:nth-child(2) { top: 15px; }
+.menu-toggle .bar:nth-child(3) { top: 21px; }
+.menu-toggle .bar:nth-child(4) { top: 27px; }
+
+.menu-toggle.is-open .bar:nth-child(2) {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.menu-toggle .bar:nth-child(3) { top: 21px; }
+
+.menu-toggle.is-open .bar:nth-child(3) { opacity: 0; }
+
+.menu-toggle.is-open .bar:nth-child(4) {
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 767px) {
+  .nav.open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    flex-direction: column;
+    background: #fbf6ee;
+    border-bottom: 1px solid #e6dccb;
+    box-shadow: 0 18px 28px rgba(0, 0, 0, 0.35);
+    padding: 0.4rem 0 0.8rem;
+  }
+
+  .nav.open a {
+    padding: 0.85rem 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+
+  .nav {
+    display: flex;
+    gap: 1.6rem;
+    margin-top: 0.7rem;
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #2f6a4a;
+  color: #fbf6ee;
+  text-decoration: none;
+  padding: 0.82rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.pill:hover { background: #27583d; }
+
+.pill.ghost {
+  background: transparent;
+  color: #3a2e24;
+  border-color: rgba(58, 46, 36, 0.35);
+}
+
+.pill.ghost:hover { background: rgba(47, 106, 74, 0.08); }
+
+.hero {
+  min-height: calc(100svh - 6.5rem);
+}
+
+.marquee {
+  background: #2f6a4a;
+  color: #fbf6ee;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 36s linear infinite;
+}
+
+.marquee p {
+  display: flex;
+  margin: 0;
+  padding: 0.95rem 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.marquee span {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 2.4rem;
+}
+
+.marquee span::after {
+  content: "·";
+  margin-left: 2.4rem;
+}
+
+.starburst {
+  position: absolute;
+  width: 132px;
+  height: 132px;
+  right: -8px;
+  top: 8%;
+  display: grid;
+  place-items: center;
+  color: #2a140c;
+  text-decoration: none;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.22));
+}
+
+.starburst svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: #ef6a2f;
+}
+
+.starburst span {
+  position: relative;
+  font-family: Lora, Georgia, serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 0.95;
+  text-align: center;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 0.2rem;
+  margin-top: 0.8rem;
+}
+
+.stars svg { width: 18px; height: 18px; }
+.stars .on { fill: #c46a45; }
+.stars .off { fill: rgba(58, 46, 36, 0.18); }
+
+.map-frame iframe {
+  width: 100%;
+  height: 440px;
+  border: 0;
+}
+
+#site-header.is-stuck {
+  box-shadow: 0 8px 24px rgba(90, 60, 30, 0.08);
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 767px) {
+  .hero { min-height: 0; }
+  .map-frame iframe { height: 320px; }
+  .starburst { width: 112px; height: 112px; right: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  .menu-toggle .bar { transition: none; }
+}
